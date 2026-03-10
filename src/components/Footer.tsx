@@ -15,13 +15,16 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-white">
+    <footer className="bg-foreground text-white relative">
+      {/* Top gradient accent */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-primary via-accent-2 to-accent-3" />
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent-2 flex items-center justify-center">
+            <a href="#" className="flex items-center gap-2.5 mb-4 group">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent-2 flex items-center justify-center shadow-lg shadow-primary/20">
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <span className="font-heading text-xl font-bold">2Dollar</span>
@@ -34,7 +37,7 @@ export default function Footer() {
               href="https://wa.me/919674479949"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white text-sm font-medium rounded-full hover:bg-white/20 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white text-sm font-medium rounded-full hover:bg-white/20 transition-all hover:scale-105"
             >
               <svg
                 className="w-4 h-4"
@@ -58,7 +61,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm text-white/50 hover:text-white transition-colors"
+                      className="text-sm text-white/50 hover:text-white hover:translate-x-1 transition-all inline-block"
                     >
                       {link}
                     </a>
@@ -75,7 +78,7 @@ export default function Footer() {
             © {new Date().getFullYear()} 2Dollar. All rights reserved.
           </p>
           <p className="text-sm text-white/40 flex items-center gap-1">
-            Made with <Heart className="w-3.5 h-3.5 text-red-400" /> in India
+            Made with <Heart className="w-3.5 h-3.5 text-red-400 animate-pulse" /> in India
           </p>
         </div>
       </div>

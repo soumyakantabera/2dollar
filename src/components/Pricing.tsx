@@ -58,7 +58,10 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 lg:py-32 bg-white">
+    <section id="pricing" className="py-24 lg:py-32 bg-white relative">
+      {/* Subtle top divider */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -68,7 +71,7 @@ export default function Pricing() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4 border border-primary/20">
             Pricing
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -84,7 +87,7 @@ export default function Pricing() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -92,15 +95,15 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`relative p-8 rounded-3xl border transition-all ${
+              className={`relative p-8 rounded-3xl border transition-all duration-300 ${
                 plan.popular
-                  ? "border-primary bg-gradient-to-b from-primary/5 to-transparent shadow-xl shadow-primary/10 scale-105"
-                  : "border-border/50 bg-white hover:shadow-lg"
+                  ? "border-primary bg-gradient-to-b from-primary/5 to-white shadow-xl shadow-primary/10 md:scale-105 ring-1 ring-primary/20"
+                  : "border-border/50 bg-white hover:shadow-lg hover:border-primary/20"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-primary to-accent-3 text-white text-xs font-bold rounded-full shadow-lg shadow-primary/25">
                     <Star className="w-3 h-3" /> Most Popular
                   </span>
                 </div>
@@ -118,10 +121,14 @@ export default function Pricing() {
                 <p className="text-sm text-muted mt-2">{plan.description}</p>
               </div>
 
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-6" />
+
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${plan.popular ? "bg-primary/10" : "bg-surface"}`}>
+                      <Check className="w-3.5 h-3.5 text-primary" />
+                    </div>
                     <span className="text-sm text-muted">{feature}</span>
                   </li>
                 ))}
@@ -131,13 +138,14 @@ export default function Pricing() {
                 href="https://wa.me/919674479949"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-semibold text-sm transition-all ${
+                className={`group flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-semibold text-sm transition-all duration-300 ${
                   plan.popular
-                    ? "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/25"
-                    : "bg-surface text-foreground hover:bg-primary hover:text-white"
+                    ? "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+                    : "bg-surface text-foreground hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20"
                 }`}
               >
-                {plan.cta} <ArrowRight className="w-4 h-4" />
+                {plan.cta}{" "}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </motion.div>
           ))}
