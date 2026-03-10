@@ -5,7 +5,7 @@ import { ArrowRight, Globe, IndianRupee, Star } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-accent-2/5" />
       <motion.div
