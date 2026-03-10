@@ -95,8 +95,7 @@ export default function Services() {
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
@@ -121,8 +120,7 @@ export default function Services() {
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className={`group relative p-8 rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 ${service.borderHover}`}
             >
