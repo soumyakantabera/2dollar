@@ -1,16 +1,23 @@
 import { Zap, Heart } from "lucide-react";
 
-const footerLinks = {
+const footerLinks: Record<string, { label: string; href: string }[]> = {
   Services: [
-    "Social Media Management",
-    "Project Management",
-    "Marketing Campaigns",
-    "Accounting & Finance",
-    "Legal Documentation",
-    "Brand Management",
+    { label: "Social Media Management", href: "#services" },
+    { label: "Project Management", href: "#services" },
+    { label: "Marketing Campaigns", href: "#services" },
+    { label: "Accounting & Finance", href: "#services" },
+    { label: "Legal Documentation", href: "#services" },
+    { label: "Brand Management", href: "#services" },
   ],
-  Company: ["About Us", "Pricing", "Contact"],
-  Legal: ["Privacy Policy", "Terms of Service"],
+  Company: [
+    { label: "About Us", href: "#about" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Contact", href: "#contact" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+  ],
 };
 
 export default function Footer() {
@@ -23,7 +30,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center gap-2.5 mb-4 group">
+            <a href="#hero" className="flex items-center gap-2.5 mb-4 group">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent-2 flex items-center justify-center shadow-lg shadow-primary/20">
                 <Zap className="w-5 h-5 text-white" />
               </div>
@@ -58,12 +65,12 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-white/50 hover:text-white hover:translate-x-1 transition-all inline-block"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
