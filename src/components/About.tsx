@@ -45,7 +45,10 @@ const features = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-surface">
+    <section id="about" className="py-24 lg:py-32 bg-surface relative">
+      {/* Subtle top divider */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
@@ -55,7 +58,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent text-sm font-semibold rounded-full mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 text-accent text-sm font-semibold rounded-full mb-4 border border-accent/20">
               Why 2Dollar
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
@@ -70,7 +73,7 @@ export default function About() {
               our rigorous quality standards means you get premium services
               without the premium price tag.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 bg-white rounded-2xl p-5 border border-border/50 shadow-sm">
               <div className="text-center">
                 <p className="font-heading text-4xl font-bold text-primary">70%</p>
                 <p className="text-sm text-muted mt-1">Cost Savings</p>
@@ -97,9 +100,11 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="p-5 rounded-2xl bg-white border border-border/50 hover:shadow-lg transition-all"
+                className="group p-5 rounded-2xl bg-white border border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300"
               >
-                <feature.icon className="w-6 h-6 text-primary mb-3" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
+                  <feature.icon className="w-5 h-5 text-primary" />
+                </div>
                 <h3 className="font-heading text-base font-semibold text-foreground mb-1.5">
                   {feature.title}
                 </h3>

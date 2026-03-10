@@ -8,9 +8,31 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-accent-2/5" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-2/10 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" />
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.12, 0.1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-20 right-10 w-96 h-96 bg-accent-2/10 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.08, 1], opacity: [0.05, 0.08, 0.05] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl"
+      />
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
         <div className="text-center max-w-4xl mx-auto">
@@ -20,7 +42,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-8 border border-primary/20">
               <Globe className="w-4 h-4" />
               India-based · Serving Worldwide
             </span>
@@ -62,10 +84,10 @@ export default function Hero() {
               href="https://wa.me/919674479949"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-all hover:shadow-xl hover:shadow-primary/25 text-base"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-all hover:shadow-xl hover:shadow-primary/25 text-base"
             >
               Start a Project
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
               href="#services"
@@ -80,7 +102,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-3 gap-6 max-w-lg mx-auto"
+            className="inline-flex items-center gap-8 sm:gap-10 bg-white/60 backdrop-blur-sm border border-border/50 rounded-2xl px-8 py-5 shadow-sm"
           >
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
@@ -91,6 +113,7 @@ export default function Hero() {
               </div>
               <p className="text-xs sm:text-sm text-muted">Starting/hr</p>
             </div>
+            <div className="w-px h-10 bg-border" />
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Globe className="w-4 h-4 text-accent-2" />
@@ -100,6 +123,7 @@ export default function Hero() {
               </div>
               <p className="text-xs sm:text-sm text-muted">Countries</p>
             </div>
+            <div className="w-px h-10 bg-border" />
             <div className="text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Star className="w-4 h-4 text-accent" />

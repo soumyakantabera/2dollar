@@ -56,3 +56,23 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--primary);
   color: white;
 }
+
+/* Scroll margin for anchor navigation with fixed navbar */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

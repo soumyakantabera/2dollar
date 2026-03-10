@@ -21,6 +21,7 @@ const services = [
     color: "from-pink-500 to-rose-500",
     bgColor: "bg-pink-50",
     iconColor: "text-pink-600",
+    borderHover: "hover:border-pink-200",
   },
   {
     icon: FolderKanban,
@@ -30,6 +31,7 @@ const services = [
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50",
     iconColor: "text-blue-600",
+    borderHover: "hover:border-blue-200",
   },
   {
     icon: Megaphone,
@@ -39,6 +41,7 @@ const services = [
     color: "from-orange-500 to-amber-500",
     bgColor: "bg-orange-50",
     iconColor: "text-orange-600",
+    borderHover: "hover:border-orange-200",
   },
   {
     icon: Calculator,
@@ -48,6 +51,7 @@ const services = [
     color: "from-emerald-500 to-teal-500",
     bgColor: "bg-emerald-50",
     iconColor: "text-emerald-600",
+    borderHover: "hover:border-emerald-200",
   },
   {
     icon: Scale,
@@ -57,6 +61,7 @@ const services = [
     color: "from-violet-500 to-purple-500",
     bgColor: "bg-violet-50",
     iconColor: "text-violet-600",
+    borderHover: "hover:border-violet-200",
   },
   {
     icon: Palette,
@@ -66,6 +71,7 @@ const services = [
     color: "from-cyan-500 to-sky-500",
     bgColor: "bg-cyan-50",
     iconColor: "text-cyan-600",
+    borderHover: "hover:border-cyan-200",
   },
   {
     icon: UserCircle,
@@ -75,12 +81,16 @@ const services = [
     color: "from-fuchsia-500 to-pink-500",
     bgColor: "bg-fuchsia-50",
     iconColor: "text-fuchsia-600",
+    borderHover: "hover:border-fuchsia-200",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-white">
+    <section id="services" className="py-24 lg:py-32 bg-white relative">
+      {/* Subtle top divider */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -90,7 +100,7 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 bg-accent-2/10 text-accent-2 text-sm font-semibold rounded-full mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-2/10 text-accent-2 text-sm font-semibold rounded-full mb-4 border border-accent-2/20">
             Our Services
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -114,10 +124,14 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group relative p-8 rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
+              className={`group relative p-8 rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 ${service.borderHover}`}
             >
+              {/* Gradient top accent on hover */}
               <div
-                className={`w-14 h-14 ${service.bgColor} rounded-2xl flex items-center justify-center mb-5`}
+                className={`absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r ${service.color} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+              />
+              <div
+                className={`w-14 h-14 ${service.bgColor} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
               >
                 <service.icon className={`w-7 h-7 ${service.iconColor}`} />
               </div>
