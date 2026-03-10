@@ -12,8 +12,7 @@ export default function WhatsAppCTA() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-accent-2 p-12 lg:p-20 text-center"
         >
